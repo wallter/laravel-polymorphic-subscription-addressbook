@@ -31,4 +31,13 @@ class CustomerFactory extends Factory
             $customer->addresses()->save(AddressFactory::new()->make());
         });
     }
+
+    public function withAutoship(?AutoshipFactory $factory = null)
+    {
+        $factory ??= AutoshipFactory::new();
+
+        return $this->afterCreating(
+            fn ($customer) => $customer->autoships()->save($factory->make()) 
+        );
+    }
 }

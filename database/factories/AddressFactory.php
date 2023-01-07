@@ -20,9 +20,9 @@ class AddressFactory extends Factory
         return [
             'street1' => $this->faker->streetAddress(),
             'street2' => $this->faker->secondaryAddress(),
-            'zip' => $this->faker->postcode(),
+            'zip' => $this->faker->numerify('#####'),
             'state' => $this->faker->stateAbbr(),
-            'type' => $this->faker->randomElement(AddressTypeEnum::cases()),
+            'type' => $this->faker->randomElement(AddressTypeEnum::values()),
             'is_default' => $this->faker->boolean(),
         ];
     }
